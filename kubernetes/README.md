@@ -8,32 +8,32 @@ This README provides a complete step-by-step guide with all the commands require
 
 ### **Create the Cluster Without a Node Group**
 ```bash
-eksctl create cluster --name=bankapp \
-                    --region=ap-south-1 \
-                    --version=1.31 \
+eksctl create cluster --name=bankapp-cluster \
+                    --region=eu-west-1 \
+                    --version=1.34 \
                     --without-nodegroup
 ```
 
 ### **Associate IAM OIDC Provider**
 ```bash
 eksctl utils associate-iam-oidc-provider \
-  --region ap-south-1 \
-  --cluster bankapp \
+  --region=eu-west-1 \
+  --cluster=bankapp-cluster \
   --approve
 ```
 
 ### **Create a Node Group**
 ```bash
-eksctl create nodegroup --cluster=bankapp \
-                     --region=ap-south-1 \
-                     --name=bankapp \
-                     --node-type=t2.medium \
+eksctl create nodegroup --cluster=bankapp-cluster \
+                     --region=eu-west-1 \
+                     --name=bankapp-ng \
+                     --node-type=m7i-flex.large \
                      --nodes=2 \
                      --nodes-min=2 \
                      --nodes-max=2 \
-                     --node-volume-size=29 \
+                     --node-volume-size=25 \
                      --ssh-access \
-                     --ssh-public-key=k8s-in-one-shot
+                     --ssh-public-key=bankapp-automate-key
 ```
 
 ---
