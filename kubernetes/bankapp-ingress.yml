@@ -12,10 +12,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - megaproject.trainwithshubham.com
+    - 34.251.6.197.nip.io
     secretName: bankapp-tls-secret  # Cert-Manager will manage this
   rules:
-  - host: 54.246.60.128.nip.io
+  - host: 34.251.6.197.nip.io
     http:
       paths:
       - path: /
